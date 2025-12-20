@@ -1,0 +1,43 @@
+# Galaxy Morphology Classification - Main Configuration
+
+# Data settings
+data_dir: "data/processed"
+labels_file: "data/labels.csv"
+num_classes: 2
+img_size: 224
+
+# Model settings
+model: "resnet18"  # Options: resnet18, resnet34, resnet50, efficientnet_b0, vit_small_patch16_224
+pretrained: true
+dropout: 0.5
+freeze_backbone: false  # Set true for feature extraction mode
+
+# Training settings
+epochs: 50
+batch_size: 32
+learning_rate: 0.0001
+weight_decay: 0.0001
+optimizer: "adamw"  # Options: adam, adamw, sgd
+scheduler: "cosine"  # Options: cosine, plateau
+
+# Class imbalance handling
+focal_loss: false
+focal_gamma: 2.0
+# class_weights: [1.0, 1.5]  # Uncomment if needed
+
+# Regularization
+use_amp: true  # Mixed precision training
+early_stopping_patience: 10
+
+# Paths
+checkpoint_dir: "outputs/models"
+results_dir: "outputs/results"
+figures_dir: "outputs/figures"
+
+# Logging
+use_wandb: true
+wandb_project: "galaxy-morphology"
+run_name: null  # Auto-generated if null
+
+# Hardware
+num_workers: 4

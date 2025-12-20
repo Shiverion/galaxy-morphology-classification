@@ -1,0 +1,45 @@
+# Data files (too large for git)
+data/
+*.zip
+
+# Model checkpoints (too large)
+outputs/models/*.pt
+outputs/models/*.pth
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+.eggs/
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Kaggle credentials
+kaggle.json
+.kaggle/
+
+# Logs
+*.log
+wandb/
+
+# Keep outputs/figures
+!outputs/figures/
