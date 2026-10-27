@@ -33,6 +33,36 @@ astroML/
 └── configs/                  # YAML configurations
 ```
 
+## System Design
+
+### Requirements
+
+- Train a binary galaxy morphology classifier and compare evaluation metrics.
+- Generate Grad-CAM and Integrated Gradients visualizations for model interpretation.
+
+### Pipeline
+
+```text
+Galaxy Zoo images + label/split CSV → preprocessing and transforms
+                                     → ResNet transfer-learning training
+                                     → evaluation / attribution figures
+```
+
+The configuration points to `data/processed` and `data/labels.csv`, while training utilities also import `src.data.dataset`. Neither the data files nor a `src/data/` package is present in this checkout, so the full training path cannot be reproduced from the repository alone.
+
+### Trade-offs
+
+| Decision | Benefit | Cost |
+| --- | --- | --- |
+| Use pretrained ResNet-family models | Reuses learned visual features | Results depend on the external data and pretrained weights |
+| Pair predictions with attribution tools | Makes image regions available for inspection | Heatmaps do not establish scientific validity on their own |
+
+### What to Revisit
+
+- Add the dataset/preprocessing module or document its separate source and expected files.
+- Align README commands with the scripts that exist in `src/training/`.
+- Record model checkpoints and data split provenance with reported metrics.
+
 ## Installation
 
 ```powershell
